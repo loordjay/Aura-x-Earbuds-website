@@ -174,12 +174,12 @@ app.get('/api/user/:username', async (req, res) => {
 
 // Explicit route to serve login.html
 app.get('/login.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'login.html'));
+  res.sendFile(path.join(__dirname, '../frontend/login.html'));
 });
 
 // Fallback route to serve index.html for SPA routing or unknown routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 // Start server
