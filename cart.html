@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="cart.css" />
+</head>
+<body>
+    <main class="page">
+        <section class="shopping-cart">
+            <div class="container">
+                <h2>Shopping Cart</h2>
+                <div id="cart-items" class="items">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+                <div class="summary">
+                    <h3>Summary</h3>
+                    <div class="summary-item"><span class="text">Subtotal</span><span id="subtotal" class="price">$0.00</span></div>
+                    <div class="summary-item"><span class="text">Discount</span><span id="discount" class="price">$0.00</span></div>
+                    <div class="summary-item"><span class="text">Shipping</span><span id="shipping" class="price">$0.00</span></div>
+                    <div class="summary-item"><span class="text">Total</span><span id="total" class="price">$0.00</span></div>
+                </div>
+                <section class="payment-section">
+                    <h3>Payment Details</h3>
+                    <form id="payment-form">
+                        <div>
+                            <label for="name">Name on Card</label>
+                            <input type="text" id="name" name="name" required />
+                        </div>
+                        <div>
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" name="card-number" maxlength="19" placeholder="1234 5678 9012 3456" required />
+                        </div>
+                        <div>
+                            <label for="expiry">Expiry Date (MM/YY)</label>
+                            <input type="text" id="expiry" name="expiry" maxlength="5" placeholder="MM/YY" required />
+                        </div>
+                        <div>
+                            <label for="cvv">CVV</label>
+                            <input type="password" id="cvv" name="cvv" maxlength="4" required />
+                        </div>
+                        <button type="submit">Place Order</button>
+                    </form>
+                    <div id="order-success" style="display:none; color: green; margin-top: 20px;">
+                        Order placed successfully! Thank you for your purchase.
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+    <script src="cart.js"></script>
+</body>
+</html>

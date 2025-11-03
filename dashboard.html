@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <style>
+    /* Advanced CSS styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #9e47a0 0%, #5ab2af 100%);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .dashboard-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem 3rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      text-align: center;
+      width: 350px;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2.5rem;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+    }
+    .user-info {
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+    .user-info span {
+      font-weight: 600;
+      color: #a0c4ff;
+    }
+    button.logout-btn, button.back-home {
+      background: #ff4b5c;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 75, 92, 0.4);
+      margin: 0 0.5rem;
+    }
+    button.logout-btn:hover, button.back-home:hover {
+      background: #ff1e2e;
+      box-shadow: 0 6px 20px rgba(255, 30, 46, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Welcome to Your Dashboard</h1>
+    <div class="user-info">
+      <p><strong>Username:</strong> <span id="usernameDisplay"></span></p>
+      <p><strong>Email:</strong> <span id="emailDisplay"></span></p>
+    </div>
+    <button class="logout-btn" id="logoutBtn">Log Out</button>
+    <button class="back-home" id="backBtn">Back to Home</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const username = localStorage.getItem('username');
+      const email = localStorage.getItem('email');
+
+      if (!username) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const usernameDisplay = document.getElementById('usernameDisplay');
+      const emailDisplay = document.getElementById('emailDisplay');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const backBtn = document.getElementById('backBtn');
+      const header = document.querySelector('h1');
+
+      if (usernameDisplay) {
+        usernameDisplay.textContent = username;
+      }
+      if (emailDisplay) {
+        emailDisplay.textContent = email ? email : 'Not provided';
+      }
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          localStorage.removeItem('username');
+          localStorage.removeItem('email');
+          window.location.href = 'login.html';
+        });
+      }
+
+      if (header) {
+        header.addEventListener('click', () => {
+          window.location.href = 'index.html';
+        });
+      }
+
+      if (backBtn) {
+        backBtn.addEventListener('click', () => {
+          window.location.href = 'index.html';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
